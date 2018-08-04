@@ -33,7 +33,10 @@ public class JMMaskTextField: UITextField {
     
     @IBInspectable public var maskString: String? {
         didSet {
-            guard let maskString = self.maskString else { return }
+            guard let maskString = self.maskString else {
+                self.stringMask = nil
+                return
+            }
             self.stringMask = JMStringMask(mask: maskString)
         }
     }
